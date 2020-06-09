@@ -37,13 +37,9 @@ parser.add_argument('--save_figdata', dest= 'save_figdata', default= False, type
                     help= 'Save figure data')
 
 
-                    
-
-
 args = parser.parse_args()
 
 last = not args.not_last_date
-
 
 
 path_data = 'data'
@@ -54,7 +50,6 @@ if not os.path.exists(path_data):
 
 if not os.path.exists(path_output):
     os.makedirs(path_output)
-
 
 
 ####### Defining useful functions
@@ -121,7 +116,6 @@ else:
 
 
 print('Running')
-
 
 results_ = []
 
