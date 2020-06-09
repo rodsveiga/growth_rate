@@ -44,6 +44,11 @@ Examples:
 - `python growth.py --location Brazil --state_or_city state`
 - `python growth.py --location Brazil --state_or_city city`
 - `python growth.py --location US`
+- `python growth.py --location World`
+- `python growth.py --location Brazil --state_or_city city --slice True --slice_name=3550308` 
+- `python growth.py --location Brazil --slice True --slice_name='RJ'`
+- `python growth.py --location World --slice True --slice_name='Germany'`
+- `python growth.py --location Brazil --state_or_city state --not_last_date True --date 2020-05-06`
 
 
 ## Data sources
