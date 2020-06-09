@@ -41,9 +41,9 @@ Example:
 - `--state_or_city`: state, city (available to Brazil)
 
 Examples: 
--- `python growth.py --location Brazil --state_or_city state`
--- `python growth.py --location Brazil --state_or_city city`
--- `python growth.py --location US`
+- `python growth.py --location Brazil --state_or_city state`
+- `python growth.py --location Brazil --state_or_city city`
+- `python growth.py --location US`
 
 
 ## Data sources
