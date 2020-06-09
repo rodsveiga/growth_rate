@@ -38,7 +38,8 @@ Example:
 #### Options
 
 - `--location`: Brazil, US, World.
-- `--state_or_city`: state, city (available to Brazil)
+- `--state_or_city`: state, city (option available to Brazil)
+- `--slice`: set `True` to calculate for one specific location `--slice_name`
 
 Examples: 
 - `python growth.py --location Brazil --state_or_city state`
