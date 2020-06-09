@@ -33,9 +33,17 @@ Results: CSV files in `results/dfs`.
 
 Script `growth.py` performes computations detailed on the notebook via command line. It downloads update data to directory `data` and outputs CSV files in `results/dfs`.
 
+Example: 
+
 #### Options
 
-- `save_`: ok
+- `--location`: Brazil, US, World.
+- `--state_or_city`: state, city (available to Brazil)
+
+Examples: 
+-- `python growth.py --location Brazil --state_or_city state`
+-- `python growth.py --location Brazil --state_or_city city`
+-- `python growth.py --location US`
 
 
 ## Data sources
