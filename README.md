@@ -19,6 +19,15 @@ Typically, [Anaconda](https://www.anaconda.com/distribution/) distribution for P
 
 ### Notebooks
 
+The notebooks present in iterative and detailed calculation of growth rate, growth acceleration and growth acceleration rate for COVID-19 cases evolution.
+
+- `growth_BR_states.ipynb`: Brazilian states
+- `growth_BR_cities.ipynb`: Brazilian cities
+- `growth_US_states.ipynb`: US states
+- `growth_world.ipynb`: World countries.
+
+Results: CSV files in `results_dfs`
+
 
 ### Script
 
@@ -29,6 +38,8 @@ Script `growth.py`.
 - [Brasil.IO](https://brasil.io/dataset/covid19/caso).
 - [Our World in Data](https://ourworldindata.org/coronavirus).
 - [The New York Times](https://github.com/nytimes/covid-19-data).
+
+Directory: `data`.
 
 ## References:
 - [Growth Rate and Acceleration Analysis of the COVID-19 Pandemic Reveals the Effect of Public Health Measures in Real Time](https://www.frontiersin.org/articles/10.3389/fmed.2020.00247/full#h6).
