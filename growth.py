@@ -205,7 +205,6 @@ for locs in locs_:
         axes[0].set_ylabel('Daily New Cases', fontsize= 13)
         axes[0].set_xlabel('Date', fontsize= 13)
         axes[0].grid(linestyle=':')
-        axes[0].legend()
 
         axes[1].plot(df_['growth_accel'], color= 'C3')
         if args.state_or_city == 'city':
@@ -215,7 +214,6 @@ for locs in locs_:
         axes[1].set_ylabel('Growth acceleration', fontsize= 13)
         axes[1].set_xlabel('Date', fontsize= 13)
         axes[1].grid(linestyle=':')
-        axes[1].legend()
 
         axes[2].plot(df_['growth_accel_rate'], color= 'C2')
         if args.state_or_city == 'city':
@@ -225,7 +223,6 @@ for locs in locs_:
         axes[2].set_ylabel('Growth acceleration rate', fontsize= 13)
         axes[2].set_xlabel('Date', fontsize= 13)
         axes[2].grid(linestyle=':')
-        axes[2].legend()
 
         axes[3].plot(df_[[cases_key]], 'o-', color= 'C1', label= 'Official data')
         axes[3].set_ylabel('Confirmed cases', fontsize= 12)
