@@ -26,7 +26,7 @@ The notebooks present an iterative and detailed calculation of growth rate, grow
 - `growth_US_states.ipynb`: US states
 - `growth_world.ipynb`: World countries.
 
-Results: CSV files in `results/dfs`.
+Results: CSV files for the last available date in `results/dfs`.
 
 
 ### Script
@@ -38,8 +38,11 @@ Example:
 #### Options
 
 - `--location`: Brazil, US, World.
-- `--state_or_city`: state, city (option available to Brazil)
-- `--slice`: set `True` to calculate for one specific location `--slice_name`
+- `--state_or_city`: state, city (option available to Brazil).
+- `--slice`: set `True` to calculate for one specific location `--slice_name` (name for countries and states and IBGE code for Brazilian cities).
+- `--not_last_date`: set `True` to check the result for an specific date (not the last one available) given by `--date`.
+- `--output_name`: change the output file name. Default: output.csv
+- `--show_plot`: set True to show plots of growth rate, growth acceleration, growth acceleration rate and number of acculated cases.
 
 Examples: 
 - `python growth.py --location Brazil --state_or_city state`
@@ -50,6 +53,8 @@ Examples:
 - `python growth.py --location Brazil --slice True --slice_name='RJ'`
 - `python growth.py --location World --slice True --slice_name='Germany'`
 - `python growth.py --location Brazil --state_or_city state --not_last_date True --date 2020-05-06`
+- `python growth.py --location Brazil --state_or_city state --output_name my_name.csv`
+
 
 
 ## Data sources
