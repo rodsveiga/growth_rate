@@ -39,10 +39,11 @@ Example:
 
 - `--location`: Brazil, US, World.
 - `--state_or_city`: state, city (option available to Brazil).
-- `--slice`: set `True` to calculate for one specific location `--slice_name` (name for countries and states and IBGE code for Brazilian cities).
+- `--slice`: set True to calculate for one specific location `--slice_name` (IBGE code for cities).
 - `--not_last_date`: set `True` to check the result for an specific date (not the last one available) given by `--date`.
 - `--output_name`: change the output file name. Default: output.csv
-- `--show_plot`: set True to show plots of growth rate, growth acceleration, growth acceleration rate and number of acculated cases.
+- `--show_plot`: set True to show plots of growth rate, acceleration,acceleration rate and number of acculated cases.
+- `--save_figdata`: set True save plot data in `results/figures`.
 
 Examples: 
 - `python growth.py --location Brazil --state_or_city state`
@@ -54,6 +55,8 @@ Examples:
 - `python growth.py --location World --slice True --slice_name='Germany'`
 - `python growth.py --location Brazil --state_or_city state --not_last_date True --date 2020-05-06`
 - `python growth.py --location Brazil --state_or_city state --output_name my_name.csv`
+- `python growth.py --location US --slice True --slice_name='New York' --show_plot True`
+- `python growth.py --location World --slice True --slice_name='South Korea' --show_plot True --save_figdata True`
 
 
 
