@@ -33,14 +33,13 @@ Results: CSV files for the last available date in `results/dfs`.
 
 Script `growth.py` performes computations detailed on the notebook via command line. It downloads update data to directory `data` and outputs CSV files in `results/dfs`.
 
-Example: 
 
 #### Options
 
 - `--location`: Brazil, US, World.
 - `--state_or_city`: state, city (option available to Brazil).
 - `--slice`: set True to calculate for one specific location `--slice_name` (IBGE code for cities).
-- `--not_last_date`: set `True` to check the result for an specific date (not the last one available) given by `--date`.
+- `--not_last_date`: set True to check the result for an specific date (not the last one available) given by `--date`.
 - `--output_name`: change the output file name. Default: output.csv
 - `--show_plot`: set True to show plots of growth rate, acceleration,acceleration rate and number of acculated cases.
 - `--save_figdata`: set True save plot data in `results/figures`.
@@ -65,7 +64,6 @@ Examples:
 - [Our World in Data](https://ourworldindata.org/coronavirus).
 - [The New York Times](https://github.com/nytimes/covid-19-data).
 
-Directory: `data`.
 
 ## References
 - [Growth Rate and Acceleration Analysis of the COVID-19 Pandemic Reveals the Effect of Public Health Measures in Real Time](https://www.frontiersin.org/articles/10.3389/fmed.2020.00247/full#h6).
