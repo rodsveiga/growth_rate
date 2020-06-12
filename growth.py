@@ -267,7 +267,7 @@ for locs in locs_:
 
 results = pd.DataFrame(results_)
 
-results.to_csv(path_output + '/' + args.output_name, index= True, sep= ';')
+results.to_csv(path_output + '/' + args.output_name)
 
 
 
