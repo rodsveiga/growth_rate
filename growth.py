@@ -77,9 +77,17 @@ print('Downloading updated data')
 if args.location == 'Brazil':
     url = "https://brasil.io/dataset/covid19/caso/?format=csv"
     filename =  path_data + '/brazil_' + url.split("/")[-3] + '.csv'
-    cases_key = 'confirmed'
+    #filename = 'data/caso__.csv'
+
+   
+    #filename = 'data/covid19-4a340474e3204299b9cec2d82f237107.csv'
+
+    
+    
+    cases_key = 'last_available_confirmed'
 
     df = download_df(url, filename)
+    #df = pd.read_csv(filename)
     df = df[ df['place_type'] == args.state_or_city]
 
     if args.state_or_city == 'state':
