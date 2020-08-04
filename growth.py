@@ -5,6 +5,7 @@ import requests
 from argparse import ArgumentParser
 from matplotlib.dates import DateFormatter
 import os
+import gzip
 
 parser = ArgumentParser()
 
@@ -24,7 +25,7 @@ parser.add_argument('--date', dest= 'until_date', default= '2020-05-05', type= s
 parser.add_argument('--show_plot', dest= 'show_plot', default= False, type= bool,
                     help= 'Show plot for each location')
 
-parser.add_argument('--output_name', dest= 'output_name', default= 'output.csv', type= str,
+parser.add_argument('--output_name', dest= 'output_name', default= 'output_new.csv', type= str,
                     help= 'CSV file: output.csv')
 
 parser.add_argument('--slice', dest= 'slice', default= False, type= bool,
@@ -60,7 +61,7 @@ def download_df(url, filename):
         r = requests.get(url)
         f.write(r.content)
 
-    return pd.read_csv(filename)
+    #return pd.read_csv(filename)
 
 ### Function to calculate rates
 def delta(df_conf):
@@ -72,21 +73,36 @@ def delta(df_conf):
 
 ####### Downloading data
 
-print('Downloading updated data')
+print('Loading data for calculating growth rate')
 
 if args.location == 'Brazil':
-    url = "https://brasil.io/dataset/covid19/caso/?format=csv"
-    filename =  path_data + '/brazil_' + url.split("/")[-3] + '.csv'
-    #filename = 'data/caso__.csv'
 
-   
-    #filename = 'data/covid19-4a340474e3204299b9cec2d82f237107.csv'
+    ###################################
+
+    url = "https://data.brasil.io/dataset/covid19/caso_full.csv.gz"
+    filename =  path_data + '/caso_full.csv.gz'
+    
+    download_df(url, filename)
+    #############################################
+    #with gzip.open(filename) as f:
+    #    df = pd.read_csv(f)
+    
+    ###################################
+    #filename = 'data/caso_full.csv.gz'
+
+    with gzip.open(filename) as f:
+        df = pd.read_csv(f)
+
+    #df = pd.read_csv(filename)
 
     
     
     cases_key = 'last_available_confirmed'
+    #cases_key = 'confirmed'
 
-    df = download_df(url, filename)
+    #df = download_df(url, filename)
+
+    #print('df = ', df)
     #df = pd.read_csv(filename)
     df = df[ df['place_type'] == args.state_or_city]
 
@@ -172,15 +188,40 @@ for locs in locs_:
     # Exponential weight
     df_['growth_accel_rate'] = df_['growth_accel_rate_'].ewm(com= alpha3).mean()
 
-    # Dropping unsmoothed quantities
-    df_ = df_.drop('growth_rate_', axis=1)
-    df_ = df_.drop('growth_accel_', axis=1)
-    df_ = df_.drop('growth_accel_rate_', axis=1)
+
+    ###################################################
+
+    # Normalized 14 days quantities
+    df_['growth_rate_NORM_(14)'] = np.nan
+    df_['growth_accel_NORM_(14)'] = np.nan
+    df_['growth_accel_rate_NORM_(14)'] = np.nan
+
+    for j in range(14, len(df_)):
+        
+        df_.iloc[j]['growth_rate_NORM_(14)'] = df_.iloc[j]['growth_rate']  / df_.iloc[j-14:j]['growth_rate'].sum()
+        df_.iloc[j]['growth_accel_NORM_(14)'] = df_.iloc[j]['growth_accel'] / df_.iloc[j-14:j]['growth_rate'].sum()
+        df_.iloc[j]['growth_accel_rate_NORM_(14)'] = df_.iloc[j]['growth_accel_rate'] / df_.iloc[j-14:j]['growth_rate'].sum()
+
+
+    ####################################################
 
     # Normalized quantities
     df_['growth_rate_NORM_(%)'] = 100*df_['growth_rate'] / df_[cases_key]
     df_['growth_accel_NORM_(%)'] = 100*df_['growth_accel'] / df_[cases_key]
     df_['growth_accel_rate_NORM_(%)'] = 100*df_['growth_accel_rate'] / df_[cases_key]
+
+
+    # Dropping unsmoothed quantities
+    df_ = df_.drop('growth_rate_', axis=1)
+    df_ = df_.drop('growth_accel_', axis=1)
+    df_ = df_.drop('growth_accel_rate_', axis=1)
+    df_ = df_.drop('growth_rate', axis=1)
+    df_ = df_.drop('growth_accel', axis=1)
+    df_ = df_.drop('growth_accel_rate', axis=1)
+
+ 
+
+
 
     # Classification
 
