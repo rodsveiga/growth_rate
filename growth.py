@@ -198,9 +198,9 @@ for locs in locs_:
 
     for j in range(14, len(df_)):
         
-        df_.iloc[j]['growth_rate_NORM_(14)'] = df_.iloc[j]['growth_rate']  / df_.iloc[j-14:j]['growth_rate'].sum()
-        df_.iloc[j]['growth_accel_NORM_(14)'] = df_.iloc[j]['growth_accel'] / df_.iloc[j-14:j]['growth_rate'].sum()
-        df_.iloc[j]['growth_accel_rate_NORM_(14)'] = df_.iloc[j]['growth_accel_rate'] / df_.iloc[j-14:j]['growth_rate'].sum()
+        df_['growth_rate_NORM_(14)'][j] = df_['growth_rate'][j]  / (df_['growth_rate'][j-14:j]).sum()
+        df_['growth_accel_NORM_(14)'][j] = df_['growth_accel'][j] / (df_['growth_rate'][j-14:j]).sum()
+        df_['growth_accel_rate_NORM_(14)'][j] = df_['growth_accel_rate'][j] / (df_['growth_rate'][j-14:j]).sum()
 
 
     ####################################################
